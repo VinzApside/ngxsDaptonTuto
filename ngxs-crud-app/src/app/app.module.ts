@@ -6,17 +6,22 @@ import { AppComponent } from "./app.component";
 import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
-import { ListComponent } from './list/list.component';
-import { FormComponent } from './form/form.component';
+import { ListComponent } from "./list/list.component";
+import { FormComponent } from "./form/form.component";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { TodoState } from "./state/todo.state";
 
 @NgModule({
   declarations: [AppComponent, ListComponent, FormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([TodoState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
